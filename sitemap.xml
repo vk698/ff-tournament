@@ -1,18 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <!-- Home Page -->
     <url>
-        <loc>https://vkboss49264.github.io/ff-tournament-backend/</loc>
-        <lastmod>2025-03-20</lastmod>
+        <loc>https://vk698.github.io/ff-tournament/</loc>
+        <lastmod>2025-04-15</lastmod>
         <priority>1.0</priority>
     </url>
+
+    <!-- Register Page -->
     <url>
-        <loc>https://vkboss49264.github.io/ff-tournament-backend/register.html</loc>
-        <lastmod>2025-03-20</lastmod>
+        <loc>https://vk698.github.io/ff-tournament/register.html</loc>
+        <lastmod>2025-04-15</lastmod>
         <priority>0.8</priority>
     </url>
+
+    <!-- Contact Page -->
     <url>
-        <loc>https://vkboss49264.github.io/ff-tournament-backend/contact.html</loc>
-        <lastmod>2025-03-20</lastmod>
+        <loc>https://vk698.github.io/ff-tournament/contact.html</loc>
+        <lastmod>2025-04-15</lastmod>
         <priority>0.8</priority>
     </url>
 </urlset>
