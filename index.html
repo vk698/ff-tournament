@@ -325,7 +325,7 @@
         function isTelegramBrowser() {
             return navigator.userAgent.includes('Telegram');
         }
-
+    
         function openInExternalBrowser() {
             const currentUrl = encodeURIComponent(window.location.href);
             window.open('https://t.me/iv?url=' + currentUrl + '&rhash=abc123', '_blank');
@@ -334,14 +334,22 @@
                 window.location.href = 'https://vkboss49264.github.io/ff-tournament-backend/';
             }, 500);
         }
-
+    
         // Show notice if in Telegram
         if (isTelegramBrowser()) {
-            document.getElementById('telegramNotice').style.display = 'block';
+            const telegramNotice = document.createElement('div');
+            telegramNotice.id = 'telegramNotice';
+            telegramNotice.innerHTML = `
+                <div style="position: fixed; top: 0; left: 0; right: 0; background: #ff0000; color: white; padding: 10px; text-align: center; z-index: 1000;">
+                    For best experience, please open in external browser
+                    <button id="openInBrowserBtn" style="margin-left: 10px; padding: 5px 10px; background: white; color: black; border: none; border-radius: 3px;">Open in Browser</button>
+                </div>
+            `;
+            document.body.prepend(telegramNotice);
             document.getElementById('openInBrowserBtn').addEventListener('click', openInExternalBrowser);
             setTimeout(openInExternalBrowser, 1000);
         }
-
+    
         // Date formatting function
         function formatIndianDate(dateString) {
             const date = new Date(dateString);
@@ -355,7 +363,7 @@
             hours = hours ? hours : 12;
             return `${day}/${month}/${year} ${hours}:${minutes} ${ampm}`;
         }
-
+    
         // Function to get next tournament date based on current time
         function getNextTournamentDate(baseDate, intervalHours = 24) {
             const now = new Date();
@@ -368,23 +376,23 @@
             
             return base;
         }
-
+    
         // Function to update countdown
         function updateCountdown(endDate, elementId) {
             const now = new Date();
             const end = new Date(endDate);
             const diff = end - now;
-
+    
             if (diff <= 0) {
                 document.getElementById(elementId).innerHTML = '<div class="status-badge completed">Completed</div>';
                 return;
             }
-
+    
             const days = Math.floor(diff / (1000 * 60 * 60 * 24));
             const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
+    
             document.getElementById(elementId).innerHTML = `
                 <div class="countdown">
                     <div class="countdown-item">
@@ -407,9 +415,10 @@
                 ${diff < 3600000 ? '<div class="status-badge live">Live Now!</div>' : '<div class="status-badge upcoming">Upcoming</div>'}
             `;
         }
-
+    
         // Tournament configuration
-        const upiId = "vishalkumar2257r@o khdfcbank";
+        const upiId = "vishalkumar2257r@okhdfcbank"; // Updated UPI ID
+        const upiName = "Vishal Kumar"; // Added UPI name
         const modes = ["Solo", "Duo", "Squad", "Clash Squad", "Custom Room"];
         
         // Generate tournaments with persistent dates
@@ -422,16 +431,16 @@
             // If we have stored tournaments and they're not too old (less than 1 day), use them
             if (storedTournaments && storedGenerationTime && 
                 (now - new Date(parseInt(storedGenerationTime)) < 24 * 60 * 60 * 1000)) {
-                return JSON.parse(storedTournaments);
+                return JSON.parse(storedTournaments)
             }
-
+    
             // Otherwise generate new tournaments
             const tournaments = [];
             
             // Base date - next even hour
             const baseDate = new Date();
             baseDate.setHours(baseDate.getHours() + 2 - (baseDate.getHours() % 2), 0, 0, 0);
-
+    
             // Tournament intervals in hours
             const intervals = {
                 "Solo": 6,
@@ -440,7 +449,7 @@
                 "Clash Squad": 6,
                 "Custom Room": 6
             };
-
+    
             modes.forEach((mode) => {
                 // Free tournament
                 const freeDate = getNextTournamentDate(baseDate, intervals[mode]);
@@ -455,7 +464,7 @@
                     image: "ff1.jpeg",
                     interval: intervals[mode] * 60 * 60 * 1000
                 });
-
+    
                 // Paid tournament 1
                 const paid1Date = new Date(freeDate.getTime() + intervals[mode] * 60 * 60 * 1000);
                 tournaments.push({
@@ -468,7 +477,7 @@
                     image: "free fire.jpeg",
                     interval: intervals[mode] * 60 * 60 * 1000
                 });
-
+    
                 // Paid tournament 2
                 const paid2Date = new Date(paid1Date.getTime() + intervals[mode] * 60 * 60 * 1000);
                 tournaments.push({
@@ -482,7 +491,7 @@
                     interval: intervals[mode] * 60 * 60 * 1000
                 });
             });
-
+    
             // Store in localStorage with generation time
             localStorage.setItem('ffTournaments', JSON.stringify(tournaments));
             localStorage.setItem('ffTournamentsGenTime', now.getTime().toString());
@@ -512,7 +521,7 @@
                 }
                 return tournament;
             });
-
+    
             // Save updated tournaments
             localStorage.setItem('ffTournaments', JSON.stringify(tournaments));
             
@@ -521,7 +530,12 @@
                 let firstPrize = tournament.type === "free" ? 25 : (tournament.name.includes("Clash Squad") ? tournament.prize : Math.round(tournament.prize * 0.5));
                 let secondPrize = tournament.type === "free" || tournament.name.includes("Clash Squad") ? 0 : Math.round(tournament.prize * 0.3);
                 let thirdPrize = tournament.type === "free" || tournament.name.includes("Clash Squad") ? 0 : Math.round(tournament.prize * 0.2);
-
+    
+                // Generate secure UPI payment link
+                const paymentLink = tournament.fee > 0 ? 
+                    `upi://pay?pa=${encodeURIComponent(upiId)}&pn=${encodeURIComponent(upiName)}&am=${tournament.fee}&cu=INR&tn=${encodeURIComponent('Free Fire Tournament: ' + tournament.name)}` : 
+                    '#';
+                
                 let div = document.createElement("div");
                 div.classList.add("tournament");
                 div.innerHTML = `
@@ -535,23 +549,23 @@
                     ${secondPrize > 0 ? `<p><strong>2nd Place:</strong> ₹${secondPrize}</p>` : ''}
                     ${thirdPrize > 0 ? `<p><strong>3rd Place:</strong> ₹${thirdPrize}</p>` : ''}
                     <p style="color: yellow; font-size: 12px;">*Prize amount may vary depending on the number of participants.</p>
-
+    
                     <div id="countdown-${tournament.id}"></div>
-
+    
                     ${tournament.fee > 0 && !tournament.name.includes("Clash Squad") ? `<button class="btn" onclick="viewDetails('${tournament.id}', ${tournament.prize})">View Details</button>` : ''}
-
+    
                     <div id="prize-breakup-${tournament.id}" class="prize-breakup" style="display: none; text-align: left; padding: 10px; border: 1px solid yellow; margin-top: 10px;"></div>
-
-                    ${tournament.fee > 0 ? `<a class="btn" href="upi://pay?pa=${upiId}&pn=Tournament&mc=&tid=&tr=&tn=FreeFireTournament&am=${tournament.fee}&cu=INR" target="_blank">Pay Now</a>` : ''}
-
+    
+                    ${tournament.fee > 0 ? `<a class="btn" href="${paymentLink}" onclick="return confirm('You will be redirected to UPI payment. Amount to pay: ₹${tournament.fee}')">Pay Now</a>` : ''}
+    
                     <button class="btn register-btn" onclick="register('${tournament.id}', '${tournament.name}', '${tournament.fee}', '${tournament.date}', '${tournament.image}')">Register</button>
                 `;
                 tournamentList.appendChild(div);
-
+    
                 // Initialize countdown
                 updateCountdown(tournament.date, `countdown-${tournament.id}`);
             });
-
+    
             // Update countdowns every second
             setInterval(() => {
                 tournaments.forEach(tournament => {
@@ -595,12 +609,29 @@
                 alert("This tournament has already ended. Please check our upcoming tournaments.");
                 return;
             }
-
+    
             if (fee > 0) {
-                let confirmPayment = confirm("Please complete the UPI payment before registering. Have you paid?");
-                if (!confirmPayment) return;
+                const transactionId = prompt("Please enter your UPI Transaction ID/Reference Number after payment:");
+                if (!transactionId || transactionId.trim().length < 8) {
+                    alert("Please enter a valid transaction ID to complete registration.");
+                    return;
+                }
+                
+                // Store payment record
+                const paymentRecord = {
+                    tournamentId: id,
+                    tournamentName: name,
+                    amount: fee,
+                    transactionId: transactionId,
+                    timestamp: new Date().toISOString()
+                };
+                
+                let payments = JSON.parse(localStorage.getItem('tournamentPayments') || '[]');
+                payments.push(paymentRecord);
+                localStorage.setItem('tournamentPayments', JSON.stringify(payments));
             }
-            window.location.href = `register.html?id=${id}&name=${name}&fee=${fee}&date=${date}&image=${image}`;
+            
+            window.location.href = `register.html?id=${encodeURIComponent(id)}&name=${encodeURIComponent(name)}&fee=${fee}&date=${encodeURIComponent(date)}&image=${encodeURIComponent(image)}`;
         }
     
         // Only display tournaments if not in Telegram
