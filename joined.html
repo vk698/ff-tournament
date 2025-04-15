@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joined Tournaments</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: black; color: white; text-align: center; }
+        .container { width: 90%; max-width: 800px; margin: auto; padding: 20px; }
+        .tournament { background: red; padding: 10px; margin: 10px 0; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>🎮 Your Joined Tournaments 🎮</h1>
+    <div id="joined-list"></div>
+
+    <script>
+        const joinedList = document.getElementById("joined-list");
+        const registrations = JSON.parse(localStorage.getItem("registrations")) || [];
+        const now = new Date();
+
+        if (registrations.length === 0) {
+            joinedList.innerHTML = "<p>You haven't joined any tournaments yet.</p>";
+        } else {
+            registrations.forEach(tournament => {
+                let div = document.createElement("div");
+                div.classList.add("tournament");
+
+                let tournamentDate = new Date(tournament.date);
+                let timeDiff = (tournamentDate - now) / (1000 * 60); // Difference in minutes
+
+                let idPasswordHTML = timeDiff <= 30 
+                    ? `<p><strong>Tournament ID:</strong> ${tournament.id}</p>
+                       <p><strong>Password:</strong> ${tournament.password}</p>`
+                    : "<p><strong>ID & Password will be available 30 minutes before the match.</strong></p>";
+
+                div.innerHTML = `
+                    <h2>${tournament.name}</h2>
+                    <p><strong>Date:</strong> ${tournamentDate.toLocaleString()}</p>
+                    ${idPasswordHTML}
+                `;
+
+                joinedList.appendChild(div);
+            });
+        }
+    </script>
+</body>
+</html>

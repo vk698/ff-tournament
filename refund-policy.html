@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cancellation and Refund Policy</title>
+    <style>
+        /* Page Styling */
+        body {
+            background-color: black;
+            color: red;
+            font-family: 'Courier New', Courier, monospace;
+            text-align: center;
+            padding: 20px;
+            overflow: auto; /* Enables scrolling */
+        }
+
+        /* Header Styling */
+        h1 {
+            font-size: 2.8em;
+            text-shadow: 0 0 15px red, 0 0 30px darkred;
+            animation: flicker 1.5s infinite alternate, glitch 0.5s infinite;
+        }
+
+        /* Glitch Effect */
+        @keyframes glitch {
+            0% { text-shadow: 5px 0 red, -5px 0 darkred; }
+            50% { text-shadow: -5px 0 red, 5px 0 darkred; }
+            100% { text-shadow: 5px 0 darkred, -5px 0 red; }
+        }
+
+        /* Section Headers */
+        h2 {
+            font-size: 2em;
+            text-shadow: 0 0 10px red;
+        }
+
+        /* Paragraph Styling */
+        p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            padding: 10px;
+        }
+
+        /* Warning Box */
+        .warning {
+            color: black;
+            background-color: red;
+            padding: 12px;
+            font-weight: bold;
+            display: inline-block;
+            border: 3px solid darkred;
+            border-radius: 5px;
+            box-shadow: 0 0 15px red;
+            animation: pulse 1s infinite alternate, border-flicker 1.5s infinite;
+        }
+
+        /* Pulsing Animation */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+
+        /* Flickering Border */
+        @keyframes border-flicker {
+            0% { border-color: darkred; }
+            50% { border-color: crimson; }
+            100% { border-color: red; }
+        }
+
+        /* Styled Lists */
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            font-size: 1.2em;
+            background: rgba(255, 0, 0, 0.2);
+            padding: 8px;
+            border-radius: 5px;
+            margin: 5px 0;
+            border: 1px solid red;
+            box-shadow: 0 0 5px red;
+        }
+
+        /* Contact Email */
+        .contact {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-top: 20px;
+            background: black;
+            padding: 10px;
+            border-radius: 5px;
+            border: 2px solid red;
+            display: inline-block;
+            box-shadow: 0 0 10px red;
+            animation: glow 1.5s infinite alternate;
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: red;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: black;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>⚠️ Cancellation & Refund Policy ⚠️</h1>
+
+    <p class="warning">Read carefully before registering for a tournament!</p>
+
+    <h2>1. Cancellation Policy</h2>
+    <p>Users can cancel their registration within <strong>24 hours</strong> of payment. After this period, cancellations are <strong>not allowed</strong>.</p>
+    <p>If you cancel within the 24-hour window, your refund will be processed according to the refund policy.</p>
+
+    <h2>2. Refund Policy</h2>
+    <p>Refunds will <strong>only</strong> be issued if:</p>
+    <ul>
+        <li>The tournament is canceled by the organizer.</li>
+        <li>Technical errors prevent participation.</li>
+        <li>Unauthorized deductions were made from your account.</li>
+    </ul>
+    <p><strong>Refund Processing Time:</strong> 5-7 business days.</p>
+
+    <h2>3. No Refunds in These Cases</h2>
+    <p>Refunds will <strong>not</strong> be provided if:</p>
+    <ul>
+        <li>You were disqualified from the tournament.</li>
+        <li>You voluntarily choose not to participate.</li>
+        <li>You fail to show up for the tournament.</li>
+    </ul>
+
+    <h2>4. Dispute Resolution</h2>
+    <p>If you believe you were unfairly denied a refund, contact our support team within <strong>48 hours</strong> of the issue.</p>
+
+    <p class="contact">Contact for Refunds: <br> <a href="mailto:vishalkumar2257r@gmail.com" style="color: red; text-decoration: none;">vishalkumar2257r@gmail.com</a></p>
+
+</body>
+</html>

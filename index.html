@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="vk 18 free fire tournament  bring you the ultimate battle experience! Compete with top players, win real cash prizes, and become the champion. Register now!">
+    <meta name="keywords" content="vk 18 free firetournament , FF Esports, FF Tournament Registration, Free Fire Battle, FF Competitive Gaming">
+    <meta name="author" content="Vishal Kumar">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags (For Facebook & Social Media) -->
+    <meta property="og:title" content="vk 18 free fire tournament - Battle, Win & Rule the Arena! ⚡">
+    <meta property="og:description" content="Join VK18 Free Fire Tournaments, compete with top players, and win exciting cash prizes. Register now to become the ultimate champion!">
+    <meta property="og:url" content="https://vkboss49264.github.io/ff-tournament-backend/">
+    <meta property="og:image" content="https://vkboss49264.github.io/ff-tournament-backend/ff1.jpeg">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="vk 18 free fire tournament ">
+    
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="vk 18 free fire tournament  - Battle, Win & Rule the Arena! ⚡">
+    <meta name="twitter:description" content="Join vk 18 free fire tournament , compete with top players, and win exciting cash prizes. Register now to become the ultimate champion!">
+    <meta name="twitter:image" content="https://vkboss49264.github.io/ff-tournament-backend/ff1.jpeg">
+    
+    <title>vk 18 free fire tournament - Battle, Win & Rule the Arena! ⚡</title>
+    <style>
+        @keyframes fireBackground {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+    
+        @keyframes neonPulse {
+            0% { box-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000, 0 0 15px #ff0000; }
+            50% { box-shadow: 0 0 20px #ff0000, 0 0 30px #ff0000, 0 0 40px #ff0000; }
+            100% { box-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000, 0 0 15px #ff0000; }
+        }
+    
+        @keyframes lightningFlash {
+            0% { opacity: 0; }
+            2% { opacity: 1; }
+            4% { opacity: 0; }
+            50% { opacity: 0; }
+            52% { opacity: 1; }
+            54% { opacity: 0; }
+            100% { opacity: 0; }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    
+        body {
+            font-family: 'Arial Black', sans-serif;
+            background: linear-gradient(45deg, #1a1a1a, #2a0000, #1a1a1a);
+            background-size: 400% 400%;
+            animation: fireBackground 15s ease infinite;
+            color: #ffffff;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+    
+        .lightning-effect {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(transparent 90%, rgba(255,255,255,0.2));
+            animation: lightningFlash 8s infinite linear;
+            pointer-events: none;
+            z-index: 0;
+        }
+    
+        .container {
+            position: relative;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.85);
+            border: 2px solid #ff4444;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(255, 68, 68, 0.3);
+            z-index: 1;
+            backdrop-filter: blur(5px);
+        }
+    
+        .navbar {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+    
+        .navbar a {
+            padding: 1rem 2rem;
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            background: linear-gradient(45deg, #ff0000, #ff6a00);
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+    
+        .navbar a::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+            transform: rotate(45deg);
+            transition: all 0.5s;
+        }
+    
+        .navbar a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.4);
+        }
+    
+        .navbar a:hover::before {
+            left: 50%;
+        }
+    
+        .tournament {
+            background: rgba(30, 0, 0, 0.8);
+            margin: 2rem 0;
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid #ff4444;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+    
+        .tournament:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 0, 0, 0.3);
+        }
+    
+        .tournament img {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 10px;
+            border: 2px solid #ff4444;
+            margin: 1rem 0;
+        }
+    
+        .btn {
+            background: linear-gradient(45deg, #ff0000, #ff6a00);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+    
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+            transform: rotate(45deg);
+            transition: all 0.5s;
+        }
+    
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+        }
+    
+        h1, h2 {
+            text-align: center;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+            margin: 1.5rem 0;
+        }
+    
+        h1 {
+            font-size: 2.5rem;
+            color: #ff4444;
+            letter-spacing: 2px;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        .countdown-item {
+            background: rgba(255, 0, 0, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            min-width: 80px;
+            animation: pulse 2s infinite;
+        }
+
+        .countdown-value {
+            font-weight: bold;
+            color: #ff4444;
+            font-size: 2rem;
+        }
+
+        .countdown-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        .status-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .upcoming {
+            background: #ff9800;
+            color: #000;
+        }
+
+        .live {
+            background: #f44336;
+            animation: pulse 1s infinite;
+        }
+
+        .completed {
+            background: #4caf50;
+        }
+
+        .register-btn {
+            background: linear-gradient(45deg, #4CAF50, #8BC34A);
+        }
+
+        .register-btn:hover {
+            box-shadow: 0 0 20px rgba(76, 175, 80, 0.5);
+        }
+    
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                margin: 1rem;
+                padding: 1rem;
+            }
+    
+            h1 {
+                font-size: 2rem;
+            }
+    
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+            }
+    
+            .tournament {
+                padding: 1rem;
+            }
+
+            .countdown {
+                flex-wrap: wrap;
+                font-size: 1.2rem;
+            }
+
+            .countdown-item {
+                min-width: 60px;
+            }
+
+            .countdown-value {
+                font-size: 1.5rem;
+            }
+        }
+    
+        /* Enhanced Lightning Effect */
+        .lightning-bolt {
+            position: fixed;
+            width: 3px;
+            background: linear-gradient(transparent, white, transparent);
+            animation: lightningFlash 8s infinite;
+            opacity: 0;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="lightning-effect"></div>
+    <div class="lightning-bolt" style="left: 20%; height: 100vh; top: -100%;"></div>
+    <div class="lightning-bolt" style="left: 50%; height: 80vh; top: -80%; animation-delay: 2s;"></div>
+    <div class="lightning-bolt" style="left: 70%; height: 120vh; top: -120%; animation-delay: 4s;"></div>
+    <div class="fire-bg"></div>
+    <div class="lightning"></div>
+
+    <div class="navbar">
+        <a href="contact.html">Contact Support</a>
+    </div>
+
+    <div class="container">
+        <h1>🔥 Free Fire Tournament 🔥</h1>
+        <h2>Available Tournaments</h2>
+        <div id="tournament-list"></div>
+    </div>
+
+    <script>
+        // Telegram detection and handling
+        function isTelegramBrowser() {
+            return navigator.userAgent.includes('Telegram');
+        }
+
+        function openInExternalBrowser() {
+            const currentUrl = encodeURIComponent(window.location.href);
+            // Try multiple methods to open in external browser
+            window.open('https://t.me/iv?url=' + currentUrl + '&rhash=abc123', '_blank');
+            window.location.href = 'externalbrowser://' + currentUrl;
+            setTimeout(() => {
+                window.location.href = 'https://vkboss49264.github.io/ff-tournament-backend/';
+            }, 500);
+        }
+
+        // Show notice if in Telegram
+        if (isTelegramBrowser()) {
+            document.getElementById('telegramNotice').style.display = 'block';
+            document.getElementById('openInBrowserBtn').addEventListener('click', openInExternalBrowser);
+            
+            // Try to redirect automatically after 1 second
+            setTimeout(openInExternalBrowser, 1000);
+        }
+
+        // Date formatting function
+        function formatIndianDate(dateString) {
+            const date = new Date(dateString);
+            const day = String(date.getDate()).padStart(2, '0');
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const year = date.getFullYear();
+            let hours = date.getHours();
+            const minutes = String(date.getMinutes()).padStart(2, '0');
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12; // Convert 0 to 12
+            return `${day}/${month}/${year} ${hours}:${minutes} ${ampm}`;
+        }
+
+        // Function to get next tournament date based on current time
+        function getNextTournamentDate(baseDate) {
+            const now = new Date();
+            const base = new Date(baseDate);
+            
+            // If the base date is in the past, find the next occurrence
+            if (base < now) {
+                // Add 1 day until we find a future date
+                while (base < now) {
+                    base.setDate(base.getDate() + 1);
+                }
+            }
+            
+            return base;
+        }
+
+        // Function to update countdown
+        function updateCountdown(endDate, elementId) {
+            const now = new Date();
+            const end = new Date(endDate);
+            const diff = end - now;
+
+            if (diff <= 0) {
+                document.getElementById(elementId).innerHTML = '<div class="status-badge completed">Completed</div>';
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById(elementId).innerHTML = `
+                <div class="countdown">
+                    <div class="countdown-item">
+                        <div class="countdown-value">${days}</div>
+                        <div class="countdown-label">Days</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-value">${hours}</div>
+                        <div class="countdown-label">Hours</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-value">${minutes}</div>
+                        <div class="countdown-label">Minutes</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-value">${seconds}</div>
+                        <div class="countdown-label">Seconds</div>
+                    </div>
+                </div>
+                ${diff < 3600000 ? '<div class="status-badge live">Live Now!</div>' : '<div class="status-badge upcoming">Upcoming</div>'}
+            `;
+        }
+
+        // Original tournament code with dynamic dates
+        const upiId = "8789297252@ptyes";
+        const modes = ["Solo", "Duo", "Squad", "Clash Squad", "Custom Room"];
+        
+        // Generate tournaments with dynamic dates
+        function generateTournaments() {
+            const now = new Date();
+            const tournaments = [];
+            
+            // Base dates for each tournament type
+            const baseDates = {
+                "Solo": new Date(now.getTime() + 6 * 60 * 60 * 1000), // 6 hours from now
+                "Duo": new Date(now.getTime() + 12 * 60 * 60 * 1000), // 12 hours from now
+                "Squad": new Date(now.getTime() + 18 * 60 * 60 * 1000), // 18 hours from now
+                "Clash Squad": new Date(now.getTime() + 24 * 60 * 60 * 1000), // 24 hours from now
+                "Custom Room": new Date(now.getTime() + 30 * 60 * 60 * 1000) // 30 hours from now
+            };
+
+            modes.forEach((mode) => {
+                // Free tournament - happens every 6 hours
+                const freeDate = getNextTournamentDate(baseDates[mode]);
+                
+                tournaments.push({
+                    name: `${mode} Free Tournament`,
+                    date: freeDate.toISOString(),
+                    fee: 0,
+                    prize: 25,
+                    id: `${mode.toUpperCase().replace(/ /g, '')}FREEFF`,
+                    type: "free",
+                    image: "ff1.jpeg"
+                });
+
+                // Paid tournament 1 - happens every 12 hours
+                const paid1Date = new Date(freeDate.getTime() + 6 * 60 * 60 * 1000);
+                tournaments.push({
+                    name: `${mode} Paid Tournament 1`,
+                    date: paid1Date.toISOString(),
+                    fee: mode === "Clash Squad" ? 269 : 50,
+                    prize: mode === "Clash Squad" ? 499 : 1000,
+                    id: `${mode.toUpperCase().replace(/ /g, '')}PAID1FF`,
+                    type: "paid",
+                    image: "free fire.jpeg"
+                });
+
+                // Paid tournament 2 - happens every 24 hours
+                const paid2Date = new Date(paid1Date.getTime() + 12 * 60 * 60 * 1000);
+                tournaments.push({
+                    name: `${mode} Paid Tournament 2`,
+                    date: paid2Date.toISOString(),
+                    fee: mode === "Clash Squad" ? 269 : 60,
+                    prize: mode === "Clash Squad" ? 499 : 1200,
+                    id: `${mode.toUpperCase().replace(/ /g, '')}PAID2FF`,
+                    type: "paid",
+                    image: "free fire.jpeg"
+                });
+            });
+
+            return tournaments;
+        }
+    
+        function displayTournaments() {
+            const tournamentList = document.getElementById("tournament-list");
+            tournamentList.innerHTML = "";
+            
+            const tournaments = generateTournaments();
+            
+            tournaments.forEach((tournament) => {
+                let firstPrize = tournament.type === "free" ? 25 : (tournament.name.includes("Clash Squad") ? tournament.prize : Math.round(tournament.prize * 0.5));
+                let secondPrize = tournament.type === "free" || tournament.name.includes("Clash Squad") ? 0 : Math.round(tournament.prize * 0.3);
+                let thirdPrize = tournament.type === "free" || tournament.name.includes("Clash Squad") ? 0 : Math.round(tournament.prize * 0.2);
+
+                let div = document.createElement("div");
+                div.classList.add("tournament");
+                div.innerHTML = `
+                    <img src="${tournament.image}" alt="Tournament Image">
+                    <h2>${tournament.name}</h2>
+                    <p><strong>Mode:</strong> ${tournament.name.split(' ')[0]}</p>
+                    <p><strong>Date:</strong> ${formatIndianDate(tournament.date)}</p>
+                    <p><strong>Entry Fee:</strong> ₹${tournament.fee}</p>
+                    <p><strong>Total Prize:</strong> ₹${tournament.prize}*</p>
+                    <p><strong>1st Place:</strong> ₹${firstPrize}</p>
+                    ${secondPrize > 0 ? `<p><strong>2nd Place:</strong> ₹${secondPrize}</p>` : ''}
+                    ${thirdPrize > 0 ? `<p><strong>3rd Place:</strong> ₹${thirdPrize}</p>` : ''}
+                    <p style="color: yellow; font-size: 12px;">*Prize amount may vary depending on the number of participants.</p>
+
+                    <div id="countdown-${tournament.id}"></div>
+
+                    ${tournament.fee > 0 && !tournament.name.includes("Clash Squad") ? `<button class="btn" onclick="viewDetails('${tournament.id}', ${tournament.prize})">View Details</button>` : ''}
+
+                    <div id="prize-breakup-${tournament.id}" class="prize-breakup" style="display: none; text-align: left; padding: 10px; border: 1px solid yellow; margin-top: 10px;"></div>
+
+                    ${tournament.fee > 0 ? `<a class="btn" href="upi://pay?pa=${upiId}&pn=Tournament&mc=&tid=&tr=&tn=FreeFireTournament&am=${tournament.fee}&cu=INR" target="_blank">Pay Now</a>` : ''}
+
+                    <button class="btn register-btn" onclick="register('${tournament.id}', '${tournament.name}', '${tournament.fee}', '${tournament.date}', '${tournament.image}')">Register</button>
+                `;
+                tournamentList.appendChild(div);
+
+                // Initialize countdown
+                updateCountdown(tournament.date, `countdown-${tournament.id}`);
+            });
+
+            // Update countdowns every second
+            setInterval(() => {
+                tournaments.forEach(tournament => {
+                    updateCountdown(tournament.date, `countdown-${tournament.id}`);
+                });
+            }, 1000);
+        }
+    
+        function viewDetails(id, totalPrize) {
+            let prizeBreakupDiv = document.getElementById(`prize-breakup-${id}`);
+            let breakdownHTML = "<h3>Prize Breakdown (Based on Participants)</h3>";
+            
+            const participantRanges = [20, 25, 30, 35, 40, 45, 50];
+            const prizeMultipliers = [0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0];
+    
+            participantRanges.forEach((participants, index) => {
+                let prizePool = Math.round(totalPrize * prizeMultipliers[index]);
+                let firstPrize = Math.round(prizePool * 0.5);
+                let secondPrize = Math.round(prizePool * 0.3);
+                let thirdPrize = Math.round(prizePool * 0.2);
+                breakdownHTML += `
+                    <p><strong>${participants} Participants:</strong></p>
+                    <ul>
+                        <li>1st Place: ₹${firstPrize}</li>
+                        <li>2nd Place: ₹${secondPrize}</li>
+                        <li>3rd Place: ₹${thirdPrize}</li>
+                    </ul>
+                    <hr>
+                `;
+            });
+    
+            prizeBreakupDiv.innerHTML = breakdownHTML;
+            prizeBreakupDiv.style.display = prizeBreakupDiv.style.display === "none" ? "block" : "none";
+        }
+    
+        function register(id, name, fee, date, image) {
+            const now = new Date();
+            const tournamentDate = new Date(date);
+            
+            if (tournamentDate < now) {
+                alert("This tournament has already ended. Please check our upcoming tournaments.");
+                return;
+            }
+
+            if (fee > 0) {
+                let confirmPayment = confirm("Please complete the UPI payment before registering. Have you paid?");
+                if (!confirmPayment) return;
+            }
+            window.location.href = `register.html?id=${id}&name=${name}&fee=${fee}&date=${date}&image=${image}`;
+        }
+    
+        // Only display tournaments if not in Telegram
+        if (!isTelegramBrowser()) {
+            displayTournaments();
+        }
+    </script>
+
+</body>
+<footer>
+    <p><a href="privacy-policy.html">Privacy Policy</a> | 
+       <a href="terms-conditions.html">Terms & Conditions</a> | 
+       <a href="refund-policy.html">Cancellation & Refund</a> | 
+       <a href="shipping-policy.html">Shipping & Delivery</a>
+    </p>
+</footer>
+</html>

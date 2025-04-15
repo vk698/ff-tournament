@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register for Tournament</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: black;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 10px;
+            background: rgba(255, 0, 0, 0.1);
+            box-shadow: 0 0 15px red;
+        }
+
+        input, button {
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        .btn {
+            background: red;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: yellow;
+            color: black;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Register for <span id="tournament-name"></span></h1>
+        <p><strong>Date:</strong> <span id="tournament-date"></span></p>
+        <p><strong>Entry Fee:</strong> ₹<span id="tournament-fee"></span></p>
+        <img id="tournament-image" src="" width="100%" style="border-radius: 10px;">
+
+        <form id="registration-form">
+            <input type="text" id="player-name" placeholder="Your In-Game Name" required>
+            <input type="email" id="player-email" placeholder="Your Email" required>
+
+            <div id="payment-section" class="hidden">
+                <p><strong>Pay via UPI:</strong> <a href="#" id="upi-link" target="_blank">Click here to Pay</a></p>
+                <input type="text" id="txn-id" placeholder="Enter Transaction ID">
+            </div>
+
+            <button type="submit" class="btn">Confirm Registration & Verify Payment</button>
+        </form>
+    </div>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const params = new URLSearchParams(window.location.search);
+    const tournamentName = params.get("name") || "Free Fire Tournament";
+    const tournamentDate = params.get("date") || "March 30, 2025";
+    const tournamentFee = params.get("fee") ? parseInt(params.get("fee")) : 0;
+    const tournamentImage = params.get("image") || "default.jpg";
+
+    document.getElementById("tournament-name").textContent = tournamentName;
+    document.getElementById("tournament-date").textContent = tournamentDate;
+    document.getElementById("tournament-fee").textContent = tournamentFee;
+    document.getElementById("tournament-image").src = tournamentImage;
+
+    const paymentSection = document.getElementById("payment-section");
+    const txnIdInput = document.getElementById("txn-id");
+    const upiLink = document.getElementById("upi-link");
+    upiLink.href = "upi://pay?pa=8789297252@ptyes&pn=Tournament&cu=INR";
+
+    if (tournamentFee > 0) {
+        paymentSection.classList.remove("hidden");
+        txnIdInput.required = true;
+    } else {
+        paymentSection.classList.add("hidden");
+        txnIdInput.required = false;
+    }
+
+    // **Telegram Detection**
+    function isTelegram() {
+        return /Telegram/i.test(navigator.userAgent);
+    }
+
+    if (isTelegram()) {
+        document.body.innerHTML = `
+            <div style="text-align:center; margin-top:50px;">
+                <h2>⚠️ Open in Browser</h2>
+                <p>This page cannot be accessed in Telegram.</p>
+                <p>Please open it in <b>Chrome</b> or <b>Safari</b>.</p>
+            </div>
+        `;
+        return; // **Stops Execution in Telegram**
+    }
+
+    document.getElementById("registration-form").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const playerName = document.getElementById("player-name").value.trim();
+        const playerEmail = document.getElementById("player-email").value.trim();
+        let transactionId = "N/A";
+
+        if (!playerName || !playerEmail) {
+            alert("❌ Please fill in all required fields!");
+            return;
+        }
+
+        if (tournamentFee > 0) {
+            transactionId = document.getElementById("txn-id").value.trim();
+            if (transactionId.length < 10) {
+                alert("❌ Invalid Transaction ID (Min 10 chars)");
+                return;
+            }
+        }
+
+        const recipientEmail = "vishalkumar2257r@gmail.com"; // ✅ Always set recipient email
+        const mailSubject = `Tournament Registration (${tournamentName})`;
+        const mailBody = `Tournament Registration\n\n` +
+            `🔹 Tournament: ${tournamentName}\n` +
+            `🔹 Date: ${tournamentDate}\n` +
+            `🔹 Name: ${playerName}\n` +
+            `🔹 Email: ${playerEmail}\n` +
+            `🔹 Entry Fee: ₹${tournamentFee}\n` +
+            `🔹 Transaction ID: ${transactionId}\n\n` +
+            `Thanks!`;
+
+        // **Open Default Email App**
+        const encodedSubject = encodeURIComponent(mailSubject);
+        const encodedBody = encodeURIComponent(mailBody);
+        const mailtoURL = `mailto:${recipientEmail}?subject=${encodedSubject}&body=${encodedBody}`;
+
+        window.location.href = mailtoURL; // ✅ Opens email client directly
+
+        alert(`✅ Registration & Payment Submitted!\n\nTournament: ${tournamentName}\nDate: ${tournamentDate}\nName: ${playerName}\nEmail: ${playerEmail}\nTournament Fee: ₹${tournamentFee}\nTransaction ID: ${transactionId}\n\nYou will receive confirmation via Gmail.`);
+    });
+});
+   
+</script>    
+</body>
+</html>

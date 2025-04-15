@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Tournaments</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
+        .container { max-width: 600px; margin: auto; }
+        .tournament { background: lightgray; padding: 10px; margin: 10px; border-radius: 5px; }
+        button { padding: 10px; cursor: pointer; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>🏆 My Joined Tournaments</h1>
+        <div id="tournamentList"></div>
+        <button onclick="clearTournaments()">Clear All</button>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", loadTournaments);
+
+        function loadTournaments() {
+            const userEmail = localStorage.getItem("playerEmail") || "guest@example.com"; 
+            const tournaments = JSON.parse(localStorage.getItem(`tournaments_${userEmail}`)) || [];
+            
+            const tournamentList = document.getElementById("tournamentList");
+            tournamentList.innerHTML = tournaments.length 
+                ? tournaments.map(t => `<div class="tournament">${t.name} - ${t.date} - ₹${t.prize}</div>`).join("")
+                : "<p>No tournaments joined yet.</p>";
+        }
+
+        function clearTournaments() {
+            const userEmail = localStorage.getItem("playerEmail") || "guest@example.com"; 
+            localStorage.removeItem(`tournaments_${userEmail}`);
+            loadTournaments();
+        }
+    </script>
+
+</body>
+</html>

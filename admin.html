@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; background: #f4f4f4; }
+        .container { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
+        h1 { color: #e44d26; }
+        ul { list-style-type: none; padding: 0; }
+        li { background: #f8f8f8; padding: 10px; margin: 5px 0; border-radius: 5px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Admin Panel</h1>
+        <h2 id="tournamentName"></h2>
+        <h3>Registered Players:</h3>
+        <ul id="playerList"></ul>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const tournamentId = urlParams.get('tournamentId');
+
+        document.getElementById("tournamentName").innerText = tournamentId ? `Tournament ID: ${tournamentId}` : "No Tournament Selected";
+
+        const tournaments = JSON.parse(localStorage.getItem("registeredPlayers")) || {};
+        const playerList = document.getElementById("playerList");
+
+        if (tournamentId && tournaments[tournamentId] && tournaments[tournamentId].length > 0) {
+            tournaments[tournamentId].forEach(player => {
+                let li = document.createElement("li");
+                li.textContent = player;
+                playerList.appendChild(li);
+            });
+        } else {
+            playerList.innerHTML = "<p>No players registered yet.</p>";
+        }
+    </script>
+
+</body>
+</html>
