@@ -531,15 +531,11 @@
                 let secondPrize = tournament.type === "free" || tournament.name.includes("Clash Squad") ? 0 : Math.round(tournament.prize * 0.3);
                 let thirdPrize = tournament.type === "free" || tournament.name.includes("Clash Squad") ? 0 : Math.round(tournament.prize * 0.2);
     
-                // Generate secure UPI payment link
-                const paymentLink = tournament.fee > 0 ? 
-                    `upi://pay?pa=${encodeURIComponent(upiId)}&pn=${encodeURIComponent(upiName)}&am=${tournament.fee}&cu=INR&tn=${encodeURIComponent('Free Fire Tournament: ' + tournament.name)}` : 
-                    '#';
-                
                 let div = document.createElement("div");
                 div.classList.add("tournament");
                 div.innerHTML = `
                     <img src="${tournament.image}" alt="Tournament Image">
+                    ${tournament.fee > 0 ? `<img src="scanner.jpeg" alt="UPI QR Code" style="max-width: 150px; float: right; margin: 10px; border: 2px solid yellow;">` : ''}
                     <h2>${tournament.name}</h2>
                     <p><strong>Mode:</strong> ${tournament.name.split(' ')[0]}</p>
                     <p><strong>Date:</strong> ${formatIndianDate(tournament.date)}</p>
@@ -549,15 +545,13 @@
                     ${secondPrize > 0 ? `<p><strong>2nd Place:</strong> ₹${secondPrize}</p>` : ''}
                     ${thirdPrize > 0 ? `<p><strong>3rd Place:</strong> ₹${thirdPrize}</p>` : ''}
                     <p style="color: yellow; font-size: 12px;">*Prize amount may vary depending on the number of participants.</p>
-    
+
                     <div id="countdown-${tournament.id}"></div>
-    
+
                     ${tournament.fee > 0 && !tournament.name.includes("Clash Squad") ? `<button class="btn" onclick="viewDetails('${tournament.id}', ${tournament.prize})">View Details</button>` : ''}
-    
+
                     <div id="prize-breakup-${tournament.id}" class="prize-breakup" style="display: none; text-align: left; padding: 10px; border: 1px solid yellow; margin-top: 10px;"></div>
-    
-                    ${tournament.fee > 0 ? `<a class="btn" href="${paymentLink}" onclick="return confirm('You will be redirected to UPI payment. Amount to pay: ₹${tournament.fee}')">Pay Now</a>` : ''}
-    
+
                     <button class="btn register-btn" onclick="register('${tournament.id}', '${tournament.name}', '${tournament.fee}', '${tournament.date}', '${tournament.image}')">Register</button>
                 `;
                 tournamentList.appendChild(div);
