@@ -535,7 +535,7 @@
                 div.classList.add("tournament");
                 div.innerHTML = `
                     <img src="${tournament.image}" alt="Tournament Image">
-                    ${tournament.fee > 0 ? `<img src="scanner.jpeg" alt="UPI QR Code" style="max-width: 150px; float: right; margin: 10px; border: 2px solid yellow;">` : ''}
+                    ${tournament.fee > 0 ? `<img src="" alt="NA right now" style="max-width: 150px; float: right; margin: 10px; border: 2px solid yellow;">` : ''}
                     <h2>${tournament.name}</h2>
                     <p><strong>Mode:</strong> ${tournament.name.split(' ')[0]}</p>
                     <p><strong>Date:</strong> ${formatIndianDate(tournament.date)}</p>
